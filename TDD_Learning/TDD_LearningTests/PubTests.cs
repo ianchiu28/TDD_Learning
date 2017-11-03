@@ -63,5 +63,37 @@ namespace TDD_Learning.Tests
             // assert
             Assert.AreEqual(expectedIncome, actualIncome);
         }
+
+        [TestMethod()]
+        public void Test_CheckIn_Charge_Only_Male()
+        {
+            // arrange
+            var customers = new List<Customer>();
+
+            // 2 men and 1 wonman
+            var customer1 = new Customer { IsMale = true };
+            var customer2 = new Customer { IsMale = true };
+            var customer3 = new Customer { IsMale = false };
+
+            customers.Add(customer1);
+            customers.Add(customer2);
+            customers.Add(customer3);
+
+            MockRepository mock = new MockRepository();
+            ICheckInFee stubCheckInFee = mock.StrictMock<ICheckInFee>();
+
+            using (mock.Record())
+            {
+                stubCheckInFee.GetFee(customer1);
+
+                LastCall.IgnoreArguments().Return((decimal)100).Repeat.Times(2);
+            }
+
+            using (mock.Playback())
+            {
+                var target = new Pub(stubCheckInFee);
+                var count = target.CheckIn(customers);
+            }
+        }
     }    
 }

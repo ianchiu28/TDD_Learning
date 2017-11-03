@@ -40,8 +40,11 @@ namespace TDD_Learning
             {
                 var isFemale = !customer.IsMale;
 
+                // for fake
+                var isLadyNight = DateTime.Today.DayOfWeek == DayOfWeek.Friday;
+
                 // only men need to pay
-                if (isFemale)
+                if (isLadyNight && isFemale)
                 {
                     continue;
                 }
