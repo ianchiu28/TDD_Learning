@@ -20,4 +20,9 @@ https://ithelp.ithome.com.tw/articles/10109845
 > Assert: 驗證是否符合預期  
 
 * Day 5  
-> 隔離相依性: 使用介面 + 測試用類別 去隔離相依性  
+> 隔離相依性: 使用 IoC (介面 + 測試用類別) 去隔離相依性  
+
+* Day 7  
+> 使用 Rhino.Mocks 幫助建設 Stub 和 Mock 加速撰寫 Unit Test 速度  
+> Stub 使用時機: 1. 驗證回傳 2. 驗證狀態改變  
+> Mock 使用時機: 1. 驗證"目標物件"和"相依物件"的互動
